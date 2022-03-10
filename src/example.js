@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form =()=>
 {
+  const [state,setState]=useState('Hi')
   const submit=()=>
   {
-     console.log("hello")
+    if(state==='Hi')
+    {
+     setState('Signed')
+    }
+    else{
+      setState('Hi')
+    }
   };
 
     return <>
@@ -13,8 +20,9 @@ const Form =()=>
         <input type='text' name='name'></input><br/>
         <label>Enter password</label><br/>
         <input type='password' name='passwword'></input><br/>
-        <button onClick={()=>submit()}>Click here</button>
+        <button onClick={()=>submit()}>Sign in</button>
       </form>
+      <h3>{state}</h3>
     </>;
 }
 
