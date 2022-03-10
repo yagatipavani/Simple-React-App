@@ -4,7 +4,7 @@ const Form =()=>
 {
   const submit=()=>
   {
-     console.log("hai")
+     console.log("hello")
   };
 
     return <>
