@@ -2,28 +2,27 @@ import React, { useState } from 'react'
 
 const Form =()=>
 {
-  const [state,setState]=useState('Hi')
-  const submit=()=>
+  const [state,setState]=useState('')
+  const [show,setShow]=useState(false)
+  const submit=(e)=>
   {
-    if(state==='Hi')
-    {
-     setState('Signed')
-    }
-    else{
-      setState('Hi')
-    }
+    e.preventDefault()
+    if(show) setShow(false)
+    else setShow(true)
+    setState(state)
   };
 
     return <>
-    <form>
-        <label>Enter name</label><br/>
-        <input type='text' name='name'></input><br/>
-        <label>Enter password</label><br/>
+    <form onSubmit={submit}> 
+      <h2>Form</h2>
+        <label>Username:  </label> 
+        <input type='text' name='name' id='name' value={state} onChange={(e)=>setState(e.target.value)}></input><br/>
+        <label>Password:   </label>
         <input type='password' name='passwword'></input><br/>
-        <button onClick={()=>submit()}>Sign in</button>
+        <button type='submit'>Sign in</button>
       </form>
-      <h3>{state}</h3>
+     {show && <h3>Hi, {state}</h3>}
+      
     </>;
 }
-
 export default Form;
